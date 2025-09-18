@@ -1,0 +1,16 @@
+# Node.js
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# Arweave wallet files
+*.json
+!package.json
+!package-lock.json
+
+# Environment files
+.env
+.env.local
+
+# OS files
+.DS_Store

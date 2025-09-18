@@ -1,0 +1,16 @@
+{
+  "name": "arweave",
+  "version": "1.0.0",
+  "description": "",
+  "main": "arweave_latency.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "arweave": "^1.15.7"
+  }
+}
