@@ -52,11 +52,11 @@ function parseSize(str) {
     const uploadMs = elapsedMs(tUploadStart);
 
     const txid = tx.id;
-    const uploadMbps = (sizeBytes * 8) / (uploadMs / 1000) / 1e6;
+    const uploadMBps = sizeBytes / (uploadMs / 1000) / 1e6;
 
     console.log(`\nTxID: ${txid}`);
     console.log(`Upload latency (to post all chunks): ${uploadMs.toLocaleString()} ms`);
-    console.log(`Upload throughput: ${uploadMbps.toFixed(2)} Mbps`);
+    console.log(`Upload throughput: ${uploadMBps.toFixed(2)} MB/s`);
 
     // --- Wait until the gateway serves the data ---
     const tAvailStart = now();
@@ -97,22 +97,69 @@ function parseSize(str) {
     const downloadMs = elapsedMs(tDlStart);
 
     const same = dlBuf.length === sizeBytes && dlBuf.equals(data);
-    const mbps = (sizeBytes * 8) / (downloadMs / 1000) / 1e6;
+    const downloadMBps = sizeBytes / (downloadMs / 1000) / 1e6;
 
     console.log(`Download latency: ${downloadMs.toLocaleString()} ms`);
-    console.log(`Download throughput: ${mbps.toFixed(2)} Mbps`);
+    console.log(`Download throughput: ${downloadMBps.toFixed(2)} MB/s`);
     console.log(`Integrity check: ${same ? "PASS" : "FAIL"}`);
 
     // Summary
-    const uploadMbpsSummary = (sizeBytes * 8) / (uploadMs / 1000) / 1e6;
+    const uploadMBpsSummary = sizeBytes / (uploadMs / 1000) / 1e6;
     console.log("\n=== Summary ===");
-    console.log(`Upload: ${uploadMs.toLocaleString()} ms (${uploadMbpsSummary.toFixed(2)} Mbps)`);
+    console.log(`Upload: ${uploadMs.toLocaleString()} ms (${uploadMBpsSummary.toFixed(2)} MB/s)`);
     console.log(`Gateway availability: ${availabilityMs.toLocaleString()} ms`);
-    console.log(`Download: ${downloadMs.toLocaleString()} ms (${mbps.toFixed(2)} Mbps)`);
+    console.log(`Download: ${downloadMs.toLocaleString()} ms (${downloadMBps.toFixed(2)} MB/s)`);
     console.log(`TxID: ${txid}`);
     console.log(`URL:  ${url}`);
+
+    // Save results to JSON file
+    const results = {
+      timestamp: new Date().toISOString(),
+      gateway: gateway,
+      fileSize: {
+        bytes: sizeBytes,
+        humanReadable: sizeArg
+      },
+      upload: {
+        latencyMs: uploadMs,
+        throughputMBps: uploadMBpsSummary,
+        throughputMBpsFormatted: uploadMBpsSummary.toFixed(2)
+      },
+      gatewayAvailability: {
+        latencyMs: availabilityMs,
+        available: available,
+        lastStatus: statusText
+      },
+      download: {
+        latencyMs: downloadMs,
+        throughputMBps: downloadMBps,
+        throughputMBpsFormatted: downloadMBps.toFixed(2)
+      },
+      integrityCheck: same ? "PASS" : "FAIL",
+      transaction: {
+        id: txid,
+        url: url
+      }
+    };
+
+    const outputFilename = `arweave-test-${txid}.json`;
+    await fs.writeFile(outputFilename, JSON.stringify(results, null, 2));
+    console.log(`\nResults saved to: ${outputFilename}`);
   } catch (err) {
     console.error("Error:", err);
+    // Try to save error to JSON file
+    try {
+      const errorResults = {
+        timestamp: new Date().toISOString(),
+        error: err.message || String(err),
+        stack: err.stack
+      };
+      const errorFilename = `arweave-test-error-${Date.now()}.json`;
+      await fs.writeFile(errorFilename, JSON.stringify(errorResults, null, 2));
+      console.error(`Error details saved to: ${errorFilename}`);
+    } catch (writeErr) {
+      console.error("Failed to save error to file:", writeErr);
+    }
     process.exit(1);
   }
 })();

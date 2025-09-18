@@ -3,10 +3,15 @@ node_modules/
 npm-debug.log*
 package-lock.json
 
-# Arweave wallet files
-*.json
+# Arweave wallet files (but keep test results)
+arweave-keyfile-*.json
+wallet.json
+jwk.json
+
+# Keep these JSON files
 !package.json
 !package-lock.json
+!arweave-test-*.json
 
 # Environment files
 .env

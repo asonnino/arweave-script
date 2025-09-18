@@ -1,0 +1,28 @@
+{
+  "timestamp": "2025-09-18T08:43:26.010Z",
+  "gateway": "https://arweave.net",
+  "fileSize": {
+    "bytes": 136314880,
+    "humanReadable": "130MB"
+  },
+  "upload": {
+    "latencyMs": 207459,
+    "throughputMBps": 0.6570690112263146,
+    "throughputMBpsFormatted": "0.66"
+  },
+  "gatewayAvailability": {
+    "latencyMs": 1326,
+    "available": true,
+    "lastStatus": "200 OK"
+  },
+  "download": {
+    "latencyMs": 24019,
+    "throughputMBps": 5.675293725800408,
+    "throughputMBpsFormatted": "5.68"
+  },
+  "integrityCheck": "PASS",
+  "transaction": {
+    "id": "q9qd-QBAAPlQFf0Az9yPTKyS_30-xDTBj2iKai0OdSs",
+    "url": "https://arweave.net/q9qd-QBAAPlQFf0Az9yPTKyS_30-xDTBj2iKai0OdSs"
+  }
+}
