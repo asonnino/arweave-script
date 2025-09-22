@@ -1,0 +1,35 @@
+{
+  "timestamp": "2025-09-22T05:48:32.744Z",
+  "transaction": {
+    "id": "ulUwWo3XnD7bOqMOZIz3rniwkXL2RSzVka6gXbbNLFQ",
+    "rawUrl": "https://arweave.net/raw/ulUwWo3XnD7bOqMOZIz3rniwkXL2RSzVka6gXbbNLFQ",
+    "txUrl": "https://arweave.net/ulUwWo3XnD7bOqMOZIz3rniwkXL2RSzVka6gXbbNLFQ",
+    "gateway": "https://arweave.net"
+  },
+  "metadata": {
+    "expectedSize": 10485760,
+    "tags": {
+      "Content-Type": "application/octet-stream"
+    },
+    "responseContentType": "application/octet-stream",
+    "responseContentLength": 10485760
+  },
+  "download": {
+    "actualSize": 10485760,
+    "downloadLatencyMs": 2020,
+    "throughputMBps": 5.190970297029703,
+    "throughputMBpsFormatted": "5.19",
+    "chunks": 641,
+    "averageChunkSizeKB": 15.975039001560063
+  },
+  "verification": {
+    "sizeMatch": true,
+    "sha256Hash": "4024f1e9b4f763dfbdcb284d90de0b2415ac5c938b93c67804ecf3387be66156",
+    "looksLikeHTML": false
+  },
+  "fileSize": {
+    "bytes": 10485760,
+    "megabytes": 10.48576,
+    "humanReadable": "10.49 MB"
+  }
+}

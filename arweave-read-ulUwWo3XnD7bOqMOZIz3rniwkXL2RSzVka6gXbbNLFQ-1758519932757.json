@@ -1,0 +1,25 @@
+{
+  "timestamp": "2025-09-22T05:45:32.757Z",
+  "transaction": {
+    "id": "ulUwWo3XnD7bOqMOZIz3rniwkXL2RSzVka6gXbbNLFQ",
+    "url": "https://arweave.net/ulUwWo3XnD7bOqMOZIz3rniwkXL2RSzVka6gXbbNLFQ",
+    "gateway": "https://arweave.net"
+  },
+  "metadata": {
+    "contentType": "application/octet-stream",
+    "contentLength": 10485760,
+    "actualSize": 10485760,
+    "sizeMismatch": false
+  },
+  "performance": {
+    "headLatencyMs": 558,
+    "downloadLatencyMs": 405,
+    "throughputMBps": 25.890765432098764,
+    "throughputMBpsFormatted": "25.89"
+  },
+  "fileSize": {
+    "bytes": 10485760,
+    "megabytes": 10.48576,
+    "humanReadable": "10.49 MB"
+  }
+}

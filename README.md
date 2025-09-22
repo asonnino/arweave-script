@@ -64,13 +64,14 @@ node arweave_latency.js wallet.json 5MB https://arweave.dev
 The tool reports:
 
 - **Upload latency**: Time to upload all data chunks (ms)
-- **Upload throughput**: Upload speed (Mbps)
+- **Upload throughput**: Upload speed (MB/s)
 - **Gateway availability**: Time until data is accessible on gateway (ms)
 - **Download latency**: Time to download the data (ms)
-- **Download throughput**: Download speed (Mbps)
+- **Download throughput**: Download speed (MB/s)
 - **Data integrity**: Pass/Fail verification that downloaded data matches uploaded data
 - **Transaction ID**: Unique identifier for the Arweave transaction
 - **URL**: Direct link to access the uploaded data
+- **JSON output**: Results are saved to `arweave-test-<txid>.json` files
 
 ## Example Output
 
@@ -80,19 +81,21 @@ Gateway: https://arweave.net
 
 TxID: cwjE-f4ZIDXB_AlAsh1TXBC6CIftXq7tgkZO3UKHo1o
 Upload latency (to post all chunks): 1,305 ms
-Upload throughput: 0.63 Mbps
+Upload throughput: 0.08 MB/s
 Gateway availability: OK (last status: 200 OK)
 Time until first 200 from gateway: 1,532 ms
 Download latency: 445 ms
-Download throughput: 1.84 Mbps
+Download throughput: 0.23 MB/s
 Integrity check: PASS
 
 === Summary ===
-Upload: 1,305 ms (0.63 Mbps)
+Upload: 1,305 ms (0.08 MB/s)
 Gateway availability: 1,532 ms
-Download: 445 ms (1.84 Mbps)
+Download: 445 ms (0.23 MB/s)
 TxID: cwjE-f4ZIDXB_AlAsh1TXBC6CIftXq7tgkZO3UKHo1o
 URL:  https://arweave.net/cwjE-f4ZIDXB_AlAsh1TXBC6CIftXq7tgkZO3UKHo1o
+
+Results saved to: arweave-test-cwjE-f4ZIDXB_AlAsh1TXBC6CIftXq7tgkZO3UKHo1o.json
 ```
 
 ## Security
